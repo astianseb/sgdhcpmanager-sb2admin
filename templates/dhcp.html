@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+<!doctype html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DHCP Management</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/metisMenu.min.css') }}" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="{{ url_for('static', filename='dist/css/timeline.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='dist/css/sb-admin-2.css') }}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{{ url_for('static', filename='bower_components/morrisjs/morris.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<title>DHCP management</title>
+<div id="wrapper">
+{% block content %}
+
+    <div id="page-wrapper">
+        <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">DHCP Configuration</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Show ARP
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/show_command" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                 <input class="form-control" type="text" placeholder="Provide MAC in a format 00:0000:000" name="arp_mac_end">
+                                             </div>
+                                             <div class="col-md-12">
+                                                 <button type="submit" class="btn btn-default"> Submit </button>
+                                             </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Show IP DHCP binding
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/show_command" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                 <input class="form-control" type="text" placeholder="Provide MAC in a format 00:0000:000" name="dhcp_mac_end">
+                                             </div>
+                                             <div class="col-md-12">
+                                                 <button type="submit" class="btn btn-default"> Submit </button>
+                                             </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ping IP address
+                            </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/show_command" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                 <input class="form-control" type="text" placeholder="192.168.0.1" name="ping_ip">
+                                             </div>
+                                             <div class="col-md-12">
+                                                 <button type="submit" class="btn btn-default"> Submit </button>
+                                             </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+     <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Add new DHCP client
+                            </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/add_dhcp_client" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                 <input class="form-control" type="text" placeholder="CLIENTA-COMA-" name="pool_name">
+                                             </div>
+                                            <div class="col-md-12">
+                                                 <input class="form-control" type="text" placeholder="192.168.0.1" name="ip_address">
+                                             </div>
+                                            <div class="col-md-12">
+                                                 <input class="form-control" type="text" placeholder="00:00:00" name="mac_address">
+                                             </div>
+                                             <div class="col-md-12">
+                                                 <button type="submit" class="btn btn-default"> Submit </button>
+                                             </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            Delete DHCP client
+                            </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/delete_dhcp_client" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                 <input class="form-control" type="text" placeholder="CLIENTA-COMA" name="pool_name">
+                                             </div>
+                                             <div class="col-md-12">
+                                                 <button type="submit" class="btn btn-default"> Submit </button>
+                                             </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="row">
+            <div class"col-lg-12">
+                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            DHCP Table
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-example_length"><label>Show <select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="dataTables-example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></label></div></div></div><div class="row"><div class="col-sm-12"><table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_desc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Pool name: activate to sort column ascending" style="width: 74px;" aria-sort="descending">Pool name</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="IP address: activate to sort column ascending" style="width: 73px;">IP address</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="IP mask: activate to sort column ascending" style="width: 76px;">IP mask</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="MAC adress: activate to sort column ascending" style="width: 53px;">MAC address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for entry in entries %}
+                                    <tr class="gradeA odd" role="row">
+                                            <td class="sorting_1">{{ entry[0] }}</td>
+                                            <td class="">{{ entry[1] }}</td>
+                                            <td>{{ entry[2] }}</td>
+                                            <td class="center">{{ entry[3] }}</td>
+                                        </tr><</tbody>
+                                    {% endfor %}
+                                </table></div></div><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a></li><li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a></li><li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a></li></ul></div></div></div></div>
+                            </div>
+                            <!-- /.table-responsive -->
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+
+        </div>
+
+
+
+
+
+</div>
+    {% endblock %}
+
+</div>
