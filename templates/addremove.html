@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddRemove</title>
+</head>
+<body>
+<div id="wrapper">
+
+{% block content %}
+  <div id="page-wrapper">
+        <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Add Remove DHCP Clients</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+      <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Provide host details:
+                            </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/add_dhcp_client" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                <label>Bandwidth Class</label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="kom_type" id="optionsRadios1" value="KOM-A" checked="">Commercial A - No BW Limit
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="kom_type" id="optionsRadios2" value="KOM-B">Commercial B - 2Mbit/s limit
+                                                    </label>
+                                                </div>
+                                               </div>
+                                                 <div class="form-group">
+                                                     <label>Name:</label>
+                                                     <input class="form-control" type="text" name="pool_name">
+                                                     <p class="help-block">Example: OKRAJ-PC1</p>
+                                                 </div>
+
+                                                 <div class="form-group">
+                                                     <label>MAC address:</label>
+                                                     <input class="form-control" type="text" name="mac_address">
+                                                     <p class="help-block">Example: 0000.abcd.1234</p>
+                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label>Host type</label>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="os_type" id="os_type" value="windows" checked="">Windows
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="os_type" id="os_type" value="non-windows">Other
+                                                        </label>
+                                                    </div>
+                                               </div>
+                                                </div>
+                                             <div class="col-md-12">
+                                                 <button type="submit" class="btn btn-default btn-lg btn-block"> Submit </button>
+                                             </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+      <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            Delete:
+                            </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/delete_dhcp_client" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                     <label>Name:</label>
+                                                     <input class="form-control" type="text" name="pool_name">
+                                                     <p class="help-block">Example: OKRAJ-PC1</p>
+                                                 </div>
+
+                                             <div class="col-md-12">
+                                                 <button type="submit" class="btn btn-default btn-lg btn-block"> Submit </button>
+                                             </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+        </div>
+    {% endblock %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+<!doctype html>
+<head xmlns="http://www.w3.org/1999/html">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DHCP Management</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/metisMenu.min.css') }}" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="{{ url_for('static', filename='dist/css/timeline.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='dist/css/sb-admin-2.css') }}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{{ url_for('static', filename='bower_components/morrisjs/morris.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<title>DHCP management</title>
+<div id="wrapper">
+{% block content %}
+
+    <div id="page-wrapper">
+        <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">DHCP table</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Config date: {{ config_date }}
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Pool Name</th>
+                                            <th>IP address</th>
+                                            <th>MAC address</th>
+                                            <th> DELETE </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                     {% for entry in entries %}
+                                        <tr>
+                                            <form action="/delete_dhcp_client" method="post">
+                                            <td><input type="hidden" name="pool_name" value="{{ entry[0] }}"/>{{ entry[0] }}</td>
+                                            <td>{{ entry[1] }}</td>
+                                            <td>{{ entry[2] }}</td>
+                                            <td><input type="radio" name="radioButton" value="isSet"></td>
+                                            <td><button type="submit" class="btn btn-danger btn-xs"> Delete </button></td>
+                                            </form>
+                                        </tr>
+                                     {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+        </div>
+
+           </div>
+    {% endblock %}
+
+</div>
+</div>

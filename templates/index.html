@@ -48,12 +48,63 @@
                         <h1 class="page-header">DHCP Configuration</h1>
                     </div>
                     <!-- /.col-lg-12 -->
+        </div>
+
+      <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Things to do before use
+                            </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="TODO_add_dhcp_client" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                     <button type="submit" class="btn btn-default"> Connect to router </button>
+                                             </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/syncconfig" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                     <button type="submit" class="btn btn-default"> Sync config </button>
+                                                </div>
+                                             </div>
+                                        </div>
+                                    </form>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="/sync_db_with_config" method="post"  >
+                                        <div class="row">
+                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                     <button type="submit" class="btn btn-default"> Sync DB wth config </button>
+                                                </div>
+
+                                             </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                    </div>
                 </div>
-
-
-
-
+      </div>
+    </div>
 </div>
+
+
     {% endblock %}
 
-</div>
+

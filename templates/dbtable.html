@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<title>DB table</title>
+<div id="wrapper">
+{% block content %}
+
+    <div id="page-wrapper">
+        <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">DB table view</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Config date: KOM-A
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Pool Name</th>
+                                            <th>IP address</th>
+                                            <th>MAC address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                     {% for entry in entries_kom_a %}
+                                        <tr>
+                                            <td>{{ entry[0] }}</td>
+                                            <td>{{ entry[1] }}</td>
+                                            <td>{{ entry[2] }}</td>
+                                        </tr>
+                                     {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+        </div>
+
+           </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Config date: KOM-B
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Pool Name</th>
+                                            <th>IP address</th>
+                                            <th>MAC address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                     {% for entry in entries_kom_b %}
+                                        <tr>
+                                            <td>{{ entry[0] }}</td>
+                                            <td>{{ entry[1] }}</td>
+                                            <td>{{ entry[2] }}</td>
+                                        </tr>
+                                     {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+        </div>
+
+           </div>
+
+    {% endblock %}
+
+</div>
+</div>
+</body>
+</html>
